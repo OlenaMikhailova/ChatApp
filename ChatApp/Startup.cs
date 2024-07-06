@@ -1,5 +1,6 @@
 ﻿using ChatApp.Hubs;
 using ChatApp.Models;
+using ChatApp.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +24,7 @@ namespace ChatApp
             services.AddDbContext<ChatContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
-            //services.AddScoped<IChatService, ChatService>();
+            services.AddScoped<IChatService, ChatService>();
 
             services.AddControllers();
             services.AddSignalR();
