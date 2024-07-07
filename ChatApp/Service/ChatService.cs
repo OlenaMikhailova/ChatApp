@@ -54,5 +54,15 @@ namespace ChatApp.Service
         {
             return await _context.Chats.FindAsync(chatId);
         }
+
+        public async Task<List<string>> GetUsersInChatAsync(int chatId)
+        {
+            var chat = await _context.Chats.Include(c => c.Messages)
+                                           .FirstOrDefaultAsync(c => c.ChatId == chatId);
+            if (chat == null) return new List<string>();
+
+            var userIds = chat.Messages.Select(m => m.UserId.ToString()).Distinct().ToList();
+            return userIds;
+        }
     }
 }

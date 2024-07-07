@@ -8,5 +8,6 @@ namespace ChatApp.Service
         Task<Chat> GetChatByIdAsync(int chatId);
         Task<Chat> CreateChatAsync(Chat chat);
         Task<bool> DeleteChatAsync(int chatId, int userId);
+        Task<List<string>> GetUsersInChatAsync(int chatId);
     }
 }
