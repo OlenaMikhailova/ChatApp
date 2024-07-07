@@ -25,6 +25,7 @@ namespace ChatApp
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IChatService, ChatService>();
+            services.AddScoped<IMessageService, MessageService>();
 
             services.AddControllers();
             services.AddSignalR();
